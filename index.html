@@ -96,33 +96,42 @@ footer {
 }
 
 footer .social-links {
+  margin-top: 10px;
+}
+
+footer .social-links p {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+footer .links {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 10px;
 }
 
-footer .social-links a {
-  display: inline-flex;
-  align-items: center;
+footer .links a {
   color: #f2f2f2;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
   transition: color 0.3s ease;
 }
 
-footer .social-links a:hover {
+footer .links a:hover {
   color: #0073e6;
 }
 
-footer .social-links i {
+footer .links i {
   margin-right: 6px;
   font-size: 1.2rem;
 }
 
 @media (max-width: 600px) {
-  footer .social-links {
+  footer .links {
     flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -169,13 +178,15 @@ footer .social-links i {
     <img src="erik_taylor.jpg" alt="Erik Taylor" class="about-img">
   </section>
 
-  <footer>
+<footer>
   <p>&copy; 2025 Erik Taylor</p>
   <div class="social-links">
-    <span>Follow me on:</span>
-    <a href="https://www.linkedin.com/in/erikntaylor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a href="https://github.com/eriktaylor" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-    <a href="https://medium.com/digital-mind" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+    <p>Follow me on:</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/erikntaylor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/eriktaylor" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://medium.com/digital-mind" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+    </div>
   </div>
 </footer>
   
