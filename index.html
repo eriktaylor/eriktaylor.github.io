@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
 
   <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 
   <style>
     html {
@@ -87,22 +88,43 @@
       color: #005bb5;
       text-decoration: underline;
     }
-    footer {
-      background-color: #222;
-      color: #fff;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    footer a {
-      color: #f2f2f2;
-      font-weight: bold;
-      text-decoration: none;
-      margin: 0 10px;
-      transition: 0.3s;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
+footer {
+  background-color: #222;
+  color: #f2f2f2;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+footer .social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+footer .social-links a {
+  display: inline-flex;
+  align-items: center;
+  color: #f2f2f2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+  color: #0073e6;
+}
+
+footer .social-links i {
+  margin-right: 6px;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  footer .social-links {
+    flex-direction: column;
+  }
+}
 
     @media (max-width: 600px) {
       .header-img, .about-img {
@@ -148,13 +170,14 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Erik Taylor</p>
-    <p>
-      Follow me on:
-      <a href="https://www.linkedin.com/in/erikntaylor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/eriktaylor" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://medium.com/digital-mind" target="_blank"><i class="fab fa-medium"></i> Medium</a>
-    </p>
-  </footer>
+  <p>&copy; 2025 Erik Taylor</p>
+  <div class="social-links">
+    <span>Follow me on:</span>
+    <a href="https://www.linkedin.com/in/erikntaylor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/eriktaylor" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://medium.com/digital-mind" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+  </div>
+</footer>
+  
 </body>
 </html>
