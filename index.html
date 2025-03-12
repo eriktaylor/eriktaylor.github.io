@@ -13,14 +13,14 @@
     .navbar {
       background-color: #333;
       overflow: hidden;
+      padding: 10px;
     }
     .navbar a {
-      float: left;
-      display: block;
       color: #f2f2f2;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
+      display: inline-block;
     }
     .navbar a:hover {
       background-color: #ddd;
@@ -40,6 +40,35 @@
       background-color: #333;
       color: #fff;
     }
+    .cta {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .cta a {
+      background: #333;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .blog-section {
+      margin-top: 40px;
+    }
+    .blog-section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .blog-section li {
+      margin-bottom: 10px;
+    }
+    .blog-section a {
+      text-decoration: none;
+      color: #0073e6;
+    }
+    .blog-section a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -48,17 +77,31 @@
   </nav>
 
   <header>
-    <h1>Welcome to my ML Blog</h1>
+    <h1>Erik Taylor - ML R&D</h1>
+    <p>AI/ML Researcher, Engineer & Educator | Deep Learning & Computer Vision</p>
+    <div class="cta">
+      <a href="#blog">Read My Latest Articles</a>
+    </div>
   </header>
 
   <main>
-  <h2>Machine Learning Education: Transformers & Computer Vision</h2>
-  <p>Your resource for educational blog posts on Machine Learning, with a focus on Transformer Architectures, Computer Vision, and related topics.</p>
-  <p>You can also find my writings and articles on <a href="https://medium.com/digital-mind">Digital Mind Medium Blog</a>.</p>    
+    <section class="blog-section" id="blog">
+      <h2>Latest Blog Posts</h2>
+      <ul>
+        <li><a href="https://medium.com/digital-mind/aligning-ais-thought-process-teaching-llms-to-think-e8ed703b378c" target="_blank">Aligning AI’s Thought Process: Teaching LLMs to Think</a></li>
+        <li><a href="https://medium.com/digital-mind/diffusion-transformer-and-rectified-flow-for-conditional-image-generation-997075c12e2f" target="_blank">Diffusion, Transformer, and Rectified Flow for Conditional Image Generation</a></li>
+        <li><a href="https://medium.com/digital-mind/visualizing-dinov2-contrastive-learning-and-classification-examples-9e6d8f87acf6" target="_blank">Visualizing DINOv2: Contrastive Learning and Classification Examples</a></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2025 Erik Taylor</p>
+    <p>Follow me on: 
+      <a href="https://www.linkedin.com/in/eriktaylor" target="_blank">LinkedIn</a> | 
+      <a href="https://github.com/eriktaylor" target="_blank">GitHub</a> | 
+      <a href="https://medium.com/digital-mind" target="_blank">Medium</a>
+    </p>
   </footer>
 </body>
 </html>
