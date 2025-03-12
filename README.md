@@ -1,4 +1,4 @@
-# **Visit eriktaylor.github.io**  
+# **eriktaylor.github.io**  
 ### **Exploring Deep Learning, Vision Transformers, and Generative AI**  
 
 This site serves as a portfolio and educational hub for cutting-edge research in **Machine Learning, Deep Learning, and AI**. Topics covered include:  
