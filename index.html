@@ -27,9 +27,26 @@
       color: black;
     }
     header {
+      display: flex;
+      align-items: center;
       padding: 2rem;
-      text-align: center;
+      text-align: left;
       background-color: #f4f4f4;
+    }
+    .header-img {
+      max-width: 100px;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+    .about-section {
+      text-align: center;
+      padding: 2rem;
+      background-color: #f9f9f9;
+    }
+    .about-img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-top: 10px;
     }
     main {
       padding: 2rem;
@@ -77,8 +94,11 @@
   </nav>
 
   <header>
-    <h1>Erik Taylor - ML R&D</h1>
-    <p>AI/ML Researcher, Engineer & Educator | Deep Learning & Computer Vision</p>
+    <img src="midjourney_brain.jpg" alt="AI Brain Artwork" class="header-img">
+    <div>
+      <h1>Erik Taylor - ML R&D</h1>
+      <p>AI/ML Researcher, Engineer & Educator | Deep Learning & Computer Vision</p>
+    </div>
   </header>
 
   <main>
@@ -91,6 +111,12 @@
       </ul>
     </section>
   </main>
+
+  <section class="about-section" id="about">
+    <h2>About Me</h2>
+    <p>I'm Erik Taylor, an AI/ML researcher specializing in Deep Learning & Computer Vision. I explore advanced AI techniques and share knowledge through blogs and projects.</p>
+    <img src="erik_taylor.jpg" alt="Erik Taylor" class="about-img">
+  </section>
 
   <footer>
     <p>&copy; 2025 Erik Taylor</p>
