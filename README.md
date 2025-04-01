@@ -2,7 +2,7 @@
 
 ### **Exploring Deep Learning, Vision Transformers, and Generative AI**  
 
-This site serves as a portfolio and educational hub for cutting-edge research in **Machine Learning, Deep Learning, and AI**. Topics covered include:  
+This site serves as my portfolio and an educational hub for cutting-edge research in **Machine Learning, Deep Learning, and AI**. Topics covered include:  
 
 - **Vision Transformers (ViTs)** – How transformer architectures revolutionize computer vision.  
 - **Generative AI** – Exploring diffusion models, rectified flow, and text-to-image generation.  
