@@ -9,4 +9,4 @@ This site serves as my portfolio and an educational hub for cutting-edge researc
 - **LLM Alignment & Thought Process** – Teaching AI to reason and align with human thinking.  
 - **AI/ML Research & Engineering** – Insights from hands-on experiments and implementation.  
 
-🚀 Follow along for deep dives, tutorials, and blog posts on the latest advancements in AI!  
+Follow along for deep dives, tutorials, and blog posts on the latest advancements in AI.
