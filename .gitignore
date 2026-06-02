@@ -1,0 +1,11 @@
+# Local-only working files — never publish to this public repo.
+# See CLAUDE.md "Editing and previewing" for the rationale.
+
+# Candid job-search strategy / positioning notes
+website_improvement_plan.md
+
+# Local working guidance for Claude Code
+CLAUDE.md
+
+# Windows/WSL download metadata artifacts
+*:Zone.Identifier
