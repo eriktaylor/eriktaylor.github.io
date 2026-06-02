@@ -3,218 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Erik Taylor | ML R&D</title>
+  <title>Erik Taylor — ML R&D Engineer</title>
+  <meta name="description" content="Erik Taylor — PhD engineer building agentic LLM systems, edge AI, and model-evaluation tooling. Writing and selected work in machine learning R&D.">
 
-  <!-- Google Fonts: Inter -->
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eriktaylor.github.io/">
+  <meta property="og:title" content="Erik Taylor — ML R&D Engineer">
+  <meta property="og:description" content="PhD engineer building agentic LLM systems, edge AI, and model-evaluation tooling.">
+  <meta property="og:image" content="https://eriktaylor.github.io/erik_taylor.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Erik Taylor — ML R&D Engineer">
+  <meta name="twitter:description" content="PhD engineer building agentic LLM systems, edge AI, and model-evaluation tooling.">
+  <meta name="twitter:image" content="https://eriktaylor.github.io/erik_taylor.jpg">
+
+  <!-- Fonts: Newsreader (literary serif) + IBM Plex Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome (social icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  
-  <!-- Favicon (Emoji version for simplicity) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
 
   <style>
     :root {
-      --bg-color: #f8f9fa;
-      --card-bg-color: #ffffff;
-      --text-color: #212529;
-      --heading-color: #343a40;
-      --link-color: #007bff;
-      --link-hover-color: #0056b3;
-      --border-color: #dee2e6;
+      --navy:      #15233f;   /* primary ink / headings */
+      --navy-soft: #1f4e79;   /* links — résumé/LinkedIn brand */
+      --accent:    #9c531f;   /* sparing warm accent */
+      --paper:     #fbfaf6;
+      --ink:       #25272e;
+      --ink-soft:  #5d6270;
+      --rule:      #e4e0d6;
+      --rule-strong:#d2ccbd;
+      --measure:   720px;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+      font-family: "Newsreader", Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      line-height: 1.62;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 1rem;
+    .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.5rem; }
+
+    a { color: var(--navy-soft); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* mono helpers */
+    .mono {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    /* --- Navigation Bar --- */
-    .navbar {
-      background-color: var(--card-bg-color);
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      text-align: center;
+    /* --- Top bar --- */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(251,250,246,0.9);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--rule);
     }
-    .navbar a {
-      color: var(--text-color);
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-      font-weight: 500;
+    .topbar .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 0.75rem; padding-bottom: 0.75rem;
     }
-    .navbar a:hover {
-      background-color: var(--link-color);
-      color: var(--card-bg-color);
+    .topbar .who { font-weight: 600; color: var(--navy); font-size: 1rem; }
+    .topbar nav { display: flex; gap: 1.2rem; }
+    .topbar nav a { color: var(--ink-soft); font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .topbar nav a:hover { color: var(--navy); text-decoration: none; }
+
+    /* --- Masthead --- */
+    .masthead { padding: 3.4rem 0 2.6rem; border-bottom: 1px solid var(--rule); }
+    .id-row { display: flex; gap: 1.6rem; align-items: center; margin-bottom: 1.8rem; }
+    .portrait {
+      width: 92px; height: 92px; flex: none;
+      object-fit: cover; border-radius: 50%;
+      filter: grayscale(0.3);
+      border: 1px solid var(--rule-strong);
+    }
+    .id-text h1 {
+      font-weight: 600; font-size: 2.1rem; line-height: 1.1;
+      letter-spacing: -0.015em; color: var(--navy); margin: 0 0 0.35rem;
+    }
+    .id-text .title { color: var(--ink-soft); font-size: 1.02rem; margin: 0 0 0.5rem; }
+    .id-text .title .sep { color: var(--rule-strong); margin: 0 0.5rem; }
+    .id-links a { color: var(--ink-soft); margin-right: 1rem; }
+    .id-links a:hover { color: var(--accent); text-decoration: none; }
+
+    .bio { font-size: 1.18rem; line-height: 1.6; max-width: 62ch; margin: 0; color: var(--ink); }
+    .bio strong { color: var(--navy); font-weight: 600; }
+
+    /* --- Sections --- */
+    section { padding: 2.8rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+    .sec-head { display: flex; align-items: baseline; gap: 0.8rem; margin: 0 0 1.6rem; }
+    .sec-head .num { color: var(--accent); }
+    .sec-head h2 {
+      font-weight: 600; font-size: 1.05rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--navy);
+      font-family: "IBM Plex Mono", monospace; margin: 0;
     }
 
-    /* --- Header --- */
-    header {
-      text-align: center;
-      padding: 4rem 1rem;
+    /* --- Writing --- */
+    .writing-list { margin: 0; padding: 0; list-style: none; }
+    .writing-list li { border-top: 1px solid var(--rule); }
+    .writing-list li:first-child { border-top: none; }
+    .writing-list a {
+      display: block; padding: 0.95rem 0; color: var(--ink);
     }
-    header h1 {
-      font-size: 2.5rem;
-      color: var(--heading-color);
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.1rem;
-      color: #6c757d;
+    .writing-list a:hover { color: var(--navy-soft); text-decoration: none; }
+    .writing-list .wtitle { font-size: 1.16rem; line-height: 1.35; }
+    .more-link { margin: 1.5rem 0 0; }
+    .more-link a { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; letter-spacing: 0.06em; }
+    .more-link a::after { content: " →"; color: var(--accent); }
+
+    /* --- Projects --- */
+    .project { padding: 1.3rem 0; border-top: 1px solid var(--rule); }
+    .project:first-child { border-top: none; }
+    .project h3 { font-size: 1.3rem; font-weight: 600; color: var(--navy); margin: 0 0 0.25rem; }
+    .project h3 a { color: inherit; }
+    .project h3 a:hover { color: var(--navy-soft); }
+    .project h3 .flag { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 400; vertical-align: middle; margin-left: 0.45rem; }
+    .project p { margin: 0.2rem 0 0.7rem; color: var(--ink); font-size: 1.05rem; max-width: 62ch; }
+    .project .proj-link { margin: 0.6rem 0 0; }
+    .project .proj-link a { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; letter-spacing: 0.05em; }
+    .project .proj-link a::after { content: " →"; color: var(--accent); }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.03em; color: var(--navy-soft); border: 1px solid var(--rule-strong); padding: 0.15rem 0.5rem; border-radius: 3px; }
+
+    /* --- Contact / footer --- */
+    .contact p { font-size: 1.16rem; max-width: 52ch; margin: 0 0 0.8rem; }
+    footer { padding: 2rem 0 3rem; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    .social a { color: var(--ink-soft); font-size: 1.15rem; margin-right: 1rem; }
+    .social a:hover { color: var(--accent); text-decoration: none; }
+    .copyright { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; color: var(--ink-soft); }
+
+    @media (max-width: 600px) {
+      .id-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .topbar nav { gap: 0.8rem; }
     }
 
-    /* --- Card Styling for Sections --- */
-    .card {
-      background-color: var(--card-bg-color);
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      border: 1px solid var(--border-color);
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(12px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+      @keyframes rise { to { opacity: 1; transform: none; } }
     }
-    .card h2 {
-      text-align: center;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-      color: var(--heading-color);
-    }
-
-    /* --- Writing/Posts Section --- */
-    .writing-section ul {
-      list-style: none;
-      padding: 0;
-      text-align: center;
-    }
-    .writing-section li {
-      margin-bottom: 1rem;
-    }
-    .writing-section a {
-      text-decoration: none;
-      color: var(--link-color);
-      font-size: 1.1rem;
-      font-weight: 500;
-      transition: color 0.3s, transform 0.2s;
-      display: inline-block;
-    }
-    .writing-section a:hover {
-      color: var(--link-hover-color);
-      transform: scale(1.02);
-    }
-
-    /* --- About Section --- */
-    .about-section {
-      text-align: center;
-    }
-    .about-section p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto 1.5rem auto;
-    }
-    .about-img {
-      max-width: 120px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    /* --- Footer --- */
-    footer {
-      background-color: var(--heading-color);
-      color: #e9ecef;
-      padding: 2rem 1rem;
-      text-align: center;
-      margin-top: 3rem;
-    }
-    footer .social-links {
-      margin-bottom: 1rem;
-    }
-    footer .social-links a {
-      color: var(--card-bg-color);
-      text-decoration: none;
-      font-size: 1.5rem;
-      margin: 0 0.75rem;
-      transition: color 0.3s, transform 0.2s;
-      display: inline-block;
-    }
-    footer .social-links a:hover {
-      color: var(--link-color);
-      transform: scale(1.1);
-    }
-    footer .copyright {
-      font-size: 0.9rem;
-      color: #adb5bd;
-    }
-
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="#posts">Posts</a>
-      <a href="#about">About</a>
+  <div class="topbar">
+    <div class="wrap">
+      <span class="who">Erik Taylor</span>
+      <nav>
+        <a href="#writing">Writing</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  </nav>
+  </div>
 
-  <header class="container">
-    <h1>Erik Taylor</h1>
-    <p>Machine Learning R&D &middot; Engineer &middot; Educator</p>
+  <header class="masthead" id="top">
+    <div class="wrap">
+      <div class="id-row reveal">
+        <img class="portrait" src="erik_taylor.jpg" alt="Erik Taylor">
+        <div class="id-text">
+          <h1>Erik Taylor</h1>
+          <p class="title">ML R&amp;D<span class="sep">·</span>Engineer<span class="sep">·</span>PhD, Brown University</p>
+          <div class="id-links mono">
+            <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/eriktaylor" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener">Medium</a>
+          </div>
+        </div>
+      </div>
+      <p class="bio reveal" style="animation-delay:.1s">
+        I'm a <strong>PhD engineer (Brown)</strong> building agentic LLM systems, edge AI, and model-evaluation tooling — with recent work spanning on-sensor computer vision at <strong>Sony</strong>, frontier-model evaluation at <strong>Snorkel AI</strong>, and NIH-funded medical imaging research. 50+ peer-reviewed publications. Focused on AI that's measurably reliable and safe to deploy.
+      </p>
+    </div>
   </header>
 
-  <main class="container">
-    <section class="card" id="posts">
-      <h2>Latest Posts</h2>
-      <div class="writing-section">
-        <ul>
-          <li><a href="https://medium.com/digital-mind/character-development-storyboarding-and-video-generation-with-gemini-2-5-flash-image-and-veo3-2037c227e608" target="_blank">Character Development, Storyboarding, and Video Generation</a></li>
-          <li><a href="https://medium.com/digital-mind/quantifying-memorization-in-llms-implications-for-creativity-and-algorithmic-thought-0e553cd73581" target="_blank">Quantifying Memorization in LLMs: Implications</a></li>
-          <li><a href="https://medium.com/digital-mind/building-a-multi-tool-rag-agent-for-financial-analysis-6d4e667546a4" target="_blank">Building a Multi-Tool RAG Agent for Financial Analysis</a></li>
-          <li><a href="https://medium.com/digital-mind/understanding-multi-head-latent-attention-36f5d954f0cf" target="_blank">Understanding Multi-Head Latent Attention</a></li>
-          <li><a href="https://medium.com/digital-mind/diffusion-transformer-and-rectified-flow-for-conditional-image-generation-997075c12e2f" target="_blank">Diffusion Transformer & Rectified Flow</a></li>
-          <li><a href="https://medium.com/digital-mind/visualizing-dinov2-contrastive-learning-and-classification-examples-9e6d8f87acf6" target="_blank">Visualizing DINOv2</a></li>
+  <main>
+    <section id="writing">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">01</span><h2>Selected Writing</h2></div>
+        <ul class="writing-list">
+          <li><a href="https://medium.com/@erikntaylor/the-ghost-of-gauss-redefining-genius-in-the-age-of-silicon-4fc008378e81" target="_blank" rel="noopener"><span class="wtitle">The Ghost of Gauss: Redefining Genius in the Age of Silicon</span></a></li>
+          <li><a href="https://medium.com/digital-mind/understanding-multi-head-latent-attention-36f5d954f0cf" target="_blank" rel="noopener"><span class="wtitle">Understanding Multi-Head Latent Attention</span></a></li>
+          <li><a href="https://medium.com/digital-mind/diffusion-transformer-and-rectified-flow-for-conditional-image-generation-997075c12e2f" target="_blank" rel="noopener"><span class="wtitle">Diffusion Transformer &amp; Rectified Flow for Conditional Image Generation</span></a></li>
+          <li><a href="https://medium.com/digital-mind/quantifying-memorization-in-llms-implications-for-creativity-and-algorithmic-thought-0e553cd73581" target="_blank" rel="noopener"><span class="wtitle">Quantifying Memorization in LLMs: Implications for Creativity and Algorithmic Thought</span></a></li>
+          <li><a href="https://medium.com/digital-mind/visual-planning-and-reasoning-in-llms-vector-graphics-and-structured-representations-f0fa021f9e80" target="_blank" rel="noopener"><span class="wtitle">Visual Planning and Reasoning in LLMs: Vector Graphics and Structured Representations</span></a></li>
+          <li><a href="https://medium.com/digital-mind/visualizing-dinov2-contrastive-learning-and-classification-examples-9e6d8f87acf6" target="_blank" rel="noopener"><span class="wtitle">Visualizing DINOv2 contrastive learning and classification examples</span></a></li>
         </ul>
+        <p class="more-link"><a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener">All writing on Medium</a></p>
       </div>
     </section>
 
-    <section class="card about-section" id="about">
-      <h2>About Me</h2>
-      <img src="erik_taylor.jpg" alt="Erik Taylor" class="about-img">
-      <p style="margin-top: 1.5rem;">
-        I'm an ML Engineer specializing in building and deploying efficient, production-grade deep learning models to solve impactful product and customer challenges.
-      </p>
+    <section id="work">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">02</span><h2>Selected Work</h2></div>
+
+        <div class="project">
+          <h3><a href="https://github.com/eriktaylor/apply-daemon" target="_blank" rel="noopener">apply-daemon</a></h3>
+          <p>An agentic pipeline that cascades LLM calls to extract, judge, and evaluate roles, with a Slack human-in-the-loop layer for review and approval.</p>
+          <div class="tags"><span class="tag">agents</span><span class="tag">cascading LLMs</span><span class="tag">human-in-the-loop</span></div>
+          <p class="proj-link"><a href="https://github.com/eriktaylor/apply-daemon" target="_blank" rel="noopener">View source on GitHub</a></p>
+        </div>
+
+        <div class="project">
+          <h3>Autonomous Trading Agent <span class="flag">(private)</span></h3>
+          <p>A trading agent pairing a LightGBM signal model with an LLM agent layer, Alpaca execution, and a Streamlit monitoring dashboard — stress-tested live in volatile markets.</p>
+          <div class="tags"><span class="tag">LightGBM</span><span class="tag">agent layer</span><span class="tag">live execution</span></div>
+          <p class="proj-link"><a href="https://medium.com/@erikntaylor/tabular-foundation-models-vs-llms-a-live-stress-test-in-volatile-markets-674eff07164c" target="_blank" rel="noopener">Read the writeup</a></p>
+        </div>
+
+        <div class="project">
+          <h3>Browser-Based Edge Inference <span class="flag">(Napwise)</span></h3>
+          <p>On-device ML with WebLLM / WebGPU: tiered inference and hybrid retrieval running entirely client-side — no server, no API key, nothing leaves the device.</p>
+          <div class="tags"><span class="tag">WebGPU</span><span class="tag">WebLLM</span><span class="tag">hybrid RAG</span></div>
+          <p class="proj-link"><a href="https://lab.napwise.ai" target="_blank" rel="noopener">Visit lab.napwise.ai</a></p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">03</span><h2>Contact</h2></div>
+        <p>Open to conversations about agentic systems, edge AI, and model evaluation. The best way to reach me is a direct message on LinkedIn.</p>
+        <p class="more-link"><a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">Message me on LinkedIn</a></p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/eriktaylor" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://medium.com/digital-mind" target="_blank" aria-label="Medium"><i class="fab fa-medium"></i></a>
+    <div class="wrap">
+      <div class="social">
+        <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/eriktaylor" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener" aria-label="Medium"><i class="fab fa-medium"></i></a>
       </div>
-      <p class="copyright">&copy; 2025 Erik Taylor</p>
+      <span class="copyright">© 2026 Erik Taylor</span>
     </div>
   </footer>
-  
 </body>
 </html>
