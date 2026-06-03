@@ -128,6 +128,19 @@
     .more-link a { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; letter-spacing: 0.06em; }
     .more-link a::after { content: " →"; color: var(--accent); }
 
+    /* --- Publications (sibling treatment to Writing) --- */
+    .pub-intro { color: var(--ink-soft); font-size: 1rem; margin: 0 0 0.7rem; max-width: 62ch; }
+    .pub-list { margin: 0; padding: 0; list-style: none; }
+    .pub-list li { border-top: 1px solid var(--rule); padding: 0.95rem 0; }
+    .pub-list li:first-child { border-top: none; }
+    .pub-journal { display: block; font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.35rem; }
+    .pub-badge { margin-left: 0.35rem; color: var(--accent); }
+    .pub-title { display: block; font-size: 1.16rem; line-height: 1.35; color: var(--navy); }
+    a.pub-title:hover { color: var(--navy-soft); text-decoration: underline; text-underline-offset: 3px; }
+    .pub-authors { display: block; font-size: 0.95rem; color: var(--ink-soft); margin-top: 0.3rem; }
+    .pub-authors strong { color: var(--ink); font-weight: 600; }
+    .pub-cite { white-space: nowrap; }
+
     /* --- Projects --- */
     .project { padding: 1.3rem 0; border-top: 1px solid var(--rule); }
     .project:first-child { border-top: none; }
@@ -166,8 +179,9 @@
     <div class="wrap">
       <span class="who">Erik Taylor</span>
       <nav>
-        <a href="#writing">Writing</a>
         <a href="#work">Work</a>
+        <a href="#writing">Writing</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -194,24 +208,9 @@
   </header>
 
   <main>
-    <section id="writing">
-      <div class="wrap">
-        <div class="sec-head"><span class="num mono">01</span><h2>Selected Writing</h2></div>
-        <ul class="writing-list">
-          <li><a href="https://medium.com/@erikntaylor/the-ghost-of-gauss-redefining-genius-in-the-age-of-silicon-4fc008378e81" target="_blank" rel="noopener"><span class="wtitle">The Ghost of Gauss: Redefining Genius in the Age of Silicon</span></a></li>
-          <li><a href="https://medium.com/digital-mind/understanding-multi-head-latent-attention-36f5d954f0cf" target="_blank" rel="noopener"><span class="wtitle">Understanding Multi-Head Latent Attention</span></a></li>
-          <li><a href="https://medium.com/digital-mind/diffusion-transformer-and-rectified-flow-for-conditional-image-generation-997075c12e2f" target="_blank" rel="noopener"><span class="wtitle">Diffusion Transformer &amp; Rectified Flow for Conditional Image Generation</span></a></li>
-          <li><a href="https://medium.com/digital-mind/quantifying-memorization-in-llms-implications-for-creativity-and-algorithmic-thought-0e553cd73581" target="_blank" rel="noopener"><span class="wtitle">Quantifying Memorization in LLMs: Implications for Creativity and Algorithmic Thought</span></a></li>
-          <li><a href="https://medium.com/digital-mind/visual-planning-and-reasoning-in-llms-vector-graphics-and-structured-representations-f0fa021f9e80" target="_blank" rel="noopener"><span class="wtitle">Visual Planning and Reasoning in LLMs: Vector Graphics and Structured Representations</span></a></li>
-          <li><a href="https://medium.com/digital-mind/visualizing-dinov2-contrastive-learning-and-classification-examples-9e6d8f87acf6" target="_blank" rel="noopener"><span class="wtitle">Visualizing DINOv2 contrastive learning and classification examples</span></a></li>
-        </ul>
-        <p class="more-link"><a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener">All writing on Medium</a></p>
-      </div>
-    </section>
-
     <section id="work">
       <div class="wrap">
-        <div class="sec-head"><span class="num mono">02</span><h2>Selected Work</h2></div>
+        <div class="sec-head"><span class="num mono">01</span><h2>Selected Work</h2></div>
 
         <div class="project">
           <h3><a href="https://github.com/eriktaylor/apply-daemon" target="_blank" rel="noopener">apply-daemon</a></h3>
@@ -231,15 +230,54 @@
           <h3>Browser-Based Edge Inference <span class="flag">(Napwise)</span></h3>
           <p>On-device ML with WebLLM / WebGPU: tiered inference and hybrid retrieval running entirely client-side — no server, no API key, nothing leaves the device.</p>
           <div class="tags"><span class="tag">WebGPU</span><span class="tag">WebLLM</span><span class="tag">hybrid RAG</span></div>
-          <p class="proj-link"><a href="https://lab.napwise.ai" target="_blank" rel="noopener">Visit lab.napwise.ai</a></p>
+          <p class="proj-link"><a href="https://napwise.ai" target="_blank" rel="noopener">Visit napwise.ai</a></p>
         </div>
 
       </div>
     </section>
 
+    <section id="writing">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">02</span><h2>Selected Writing</h2></div>
+        <ul class="writing-list">
+          <li><a href="https://medium.com/@erikntaylor/the-ghost-of-gauss-redefining-genius-in-the-age-of-silicon-4fc008378e81" target="_blank" rel="noopener"><span class="wtitle">The Ghost of Gauss: Redefining Genius in the Age of Silicon</span></a></li>
+          <li><a href="https://medium.com/digital-mind/understanding-multi-head-latent-attention-36f5d954f0cf" target="_blank" rel="noopener"><span class="wtitle">Understanding Multi-Head Latent Attention</span></a></li>
+          <li><a href="https://medium.com/digital-mind/diffusion-transformer-and-rectified-flow-for-conditional-image-generation-997075c12e2f" target="_blank" rel="noopener"><span class="wtitle">Diffusion Transformer &amp; Rectified Flow for Conditional Image Generation</span></a></li>
+          <li><a href="https://medium.com/digital-mind/quantifying-memorization-in-llms-implications-for-creativity-and-algorithmic-thought-0e553cd73581" target="_blank" rel="noopener"><span class="wtitle">Quantifying Memorization in LLMs: Implications for Creativity and Algorithmic Thought</span></a></li>
+          <li><a href="https://medium.com/digital-mind/visual-planning-and-reasoning-in-llms-vector-graphics-and-structured-representations-f0fa021f9e80" target="_blank" rel="noopener"><span class="wtitle">Visual Planning and Reasoning in LLMs: Vector Graphics and Structured Representations</span></a></li>
+          <li><a href="https://medium.com/digital-mind/visualizing-dinov2-contrastive-learning-and-classification-examples-9e6d8f87acf6" target="_blank" rel="noopener"><span class="wtitle">Visualizing DINOv2 contrastive learning and classification examples</span></a></li>
+        </ul>
+        <p class="more-link"><a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener">All writing on Medium</a></p>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">03</span><h2>Selected Publications</h2></div>
+        <p class="pub-intro">Selected from 50+ peer-reviewed publications. Full list available on request.</p>
+        <ul class="pub-list">
+          <li>
+            <span class="pub-journal">Journal of Neurotrauma · 2023 <span class="pub-badge">★ Cover Feature</span></span>
+            <a class="pub-title" href="https://pubmed.ncbi.nlm.nih.gov/36869619/" target="_blank" rel="noopener">Non-invasive vagus nerve stimulation improves brain lesion volume and neurobehavioral outcomes in a rat model of traumatic brain injury</a>
+            <span class="pub-authors">Divani AA, Salazar P, Ikram HA, <strong>Taylor E</strong>, Wilson CM, et al. <span class="pub-cite">40(13–14): 1481–1494.</span></span>
+          </li>
+          <li>
+            <span class="pub-journal">Journal of Cardiovascular Magnetic Resonance · 2022</span>
+            <a class="pub-title" href="https://pubmed.ncbi.nlm.nih.gov/36544161/" target="_blank" rel="noopener">Lipid and smooth muscle architectural pathology in the rabbit atherosclerotic vessel wall using Q-space cardiovascular magnetic resonance</a>
+            <span class="pub-authors"><strong>Taylor EN</strong>, Huang N, Lin S, Mortazavi F, Wedeen VJ, et al. <span class="pub-cite">24(1): 74.</span></span>
+          </li>
+          <li>
+            <span class="pub-journal">Oncotarget · 2017</span>
+            <a class="pub-title" href="https://pubmed.ncbi.nlm.nih.gov/28404971/" target="_blank" rel="noopener">Association between tumor architecture derived from generalized Q-space MRI and survival in glioblastoma</a>
+            <span class="pub-authors"><strong>Taylor EN</strong>, Ding Y, Zhu S, Cheah E, et al. <span class="pub-cite">8(26): 16296.</span></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section id="contact" class="contact">
       <div class="wrap">
-        <div class="sec-head"><span class="num mono">03</span><h2>Contact</h2></div>
+        <div class="sec-head"><span class="num mono">04</span><h2>Contact</h2></div>
         <p>Open to conversations about agentic systems, edge AI, and model evaluation. The best way to reach me is a direct message on LinkedIn.</p>
         <p class="more-link"><a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">Message me on LinkedIn</a></p>
       </div>
