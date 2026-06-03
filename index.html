@@ -155,17 +155,32 @@
     .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.03em; color: var(--navy-soft); border: 1px solid var(--rule-strong); padding: 0.15rem 0.5rem; border-radius: 3px; }
 
-    /* --- Contact / footer --- */
-    .contact p { font-size: 1.16rem; max-width: 52ch; margin: 0 0 0.8rem; }
-    footer { padding: 2rem 0 3rem; }
-    footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
+    /* --- Experience --- */
+    .exp-item { padding: 1.1rem 0; border-top: 1px solid var(--rule); }
+    .exp-item:first-child { border-top: none; }
+    .exp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem 1rem; flex-wrap: wrap; }
+    .exp-role { font-size: 1.16rem; line-height: 1.3; color: var(--navy); font-weight: 600; }
+    .exp-role .co { font-weight: 400; color: var(--ink-soft); }
+    .exp-dates { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.06em; color: var(--accent); white-space: nowrap; }
+    .exp-item p { margin: 0.3rem 0 0; color: var(--ink-soft); font-size: 1rem; max-width: 62ch; }
+
+    /* --- Footer --- */
+    footer { padding: 2.6rem 0 3rem; border-top: 1px solid var(--rule); margin-top: 0.5rem; }
+    .footer-note { font-size: 1.08rem; color: var(--ink); max-width: 58ch; margin: 0 0 1.6rem; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
     .social a { color: var(--ink-soft); font-size: 1.15rem; margin-right: 1rem; }
     .social a:hover { color: var(--accent); text-decoration: none; }
     .copyright { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; color: var(--ink-soft); }
 
     @media (max-width: 600px) {
+      body { font-size: 18px; }
       .id-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .topbar nav { gap: 0.8rem; }
+      /* Hide the name in the bar so the four nav items fit one row on phones */
+      .topbar .who { display: none; }
+      .topbar .wrap { justify-content: center; }
+      .topbar nav { gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
+      .topbar nav a { font-size: 0.7rem; letter-spacing: 0.04em; }
+      .exp-dates { font-size: 0.66rem; }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -180,9 +195,9 @@
       <span class="who">Erik Taylor</span>
       <nav>
         <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
         <a href="#writing">Writing</a>
         <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
       </nav>
     </div>
   </div>
@@ -236,9 +251,66 @@
       </div>
     </section>
 
+    <section id="experience">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">02</span><h2>Experience</h2></div>
+        <div class="exp-list">
+
+          <div class="exp-item">
+            <div class="exp-head">
+              <span class="exp-role">AI Research Lead &amp; ML Engineer <span class="co">· Taylor ML R&amp;D</span></span>
+              <span class="exp-dates">2024 — Present</span>
+            </div>
+            <p>Agentic systems, model evaluation, and AI-assisted engineering — built primarily through agentic coding workflows.</p>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-head">
+              <span class="exp-role">Founder &amp; Lead ML Engineer <span class="co">· Napwise.ai</span></span>
+              <span class="exp-dates">2025 — 2026</span>
+            </div>
+            <p>Shipped a privacy-first, on-device generative AI product end-to-end.</p>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-head">
+              <span class="exp-role">AI Evaluation Specialist (Contract) <span class="co">· Snorkel AI</span></span>
+              <span class="exp-dates">2025</span>
+            </div>
+            <p>Authored test cases exposing reasoning failures in frontier LLMs; findings informed RL reward signals and alignment strategy.</p>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-head">
+              <span class="exp-role">Senior Algorithm Engineer <span class="co">· Sony Electronics</span></span>
+              <span class="exp-dates">2022 — 2024</span>
+            </div>
+            <p>Production on-sensor computer vision for edge devices including phones and VR headsets; secured a Fortune 500 design win.</p>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-head">
+              <span class="exp-role">Research Assistant Professor <span class="co">· University of New Mexico</span></span>
+              <span class="exp-dates">2019 — 2022</span>
+            </div>
+            <p>Led AI strategy for NIH-funded imaging program; journal-cover work on a custom deep-learning model for traumatic brain injury.</p>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-head">
+              <span class="exp-role">NIH Research Fellow <span class="co">· Boston University</span></span>
+              <span class="exp-dates">2016 — 2019</span>
+            </div>
+            <p>Cardiovascular MRI; deep learning vs. classical method validation.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section id="writing">
       <div class="wrap">
-        <div class="sec-head"><span class="num mono">02</span><h2>Selected Writing</h2></div>
+        <div class="sec-head"><span class="num mono">03</span><h2>Selected Writing</h2></div>
         <ul class="writing-list">
           <li><a href="https://medium.com/@erikntaylor/the-ghost-of-gauss-redefining-genius-in-the-age-of-silicon-4fc008378e81" target="_blank" rel="noopener"><span class="wtitle">The Ghost of Gauss: Redefining Genius in the Age of Silicon</span></a></li>
           <li><a href="https://medium.com/digital-mind/understanding-multi-head-latent-attention-36f5d954f0cf" target="_blank" rel="noopener"><span class="wtitle">Understanding Multi-Head Latent Attention</span></a></li>
@@ -253,7 +325,7 @@
 
     <section id="publications">
       <div class="wrap">
-        <div class="sec-head"><span class="num mono">03</span><h2>Selected Publications</h2></div>
+        <div class="sec-head"><span class="num mono">04</span><h2>Selected Publications</h2></div>
         <p class="pub-intro">Selected from 50+ peer-reviewed publications. Full list available on request.</p>
         <ul class="pub-list">
           <li>
@@ -274,24 +346,19 @@
         </ul>
       </div>
     </section>
-
-    <section id="contact" class="contact">
-      <div class="wrap">
-        <div class="sec-head"><span class="num mono">04</span><h2>Contact</h2></div>
-        <p>Open to conversations about agentic systems, edge AI, and model evaluation. The best way to reach me is a direct message on LinkedIn.</p>
-        <p class="more-link"><a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">Message me on LinkedIn</a></p>
-      </div>
-    </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <div class="social">
-        <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/eriktaylor" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener" aria-label="Medium"><i class="fab fa-medium"></i></a>
+      <p class="footer-note">Open to conversations about agentic systems, edge AI, and model evaluation — best reached by a direct message on <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      <div class="footer-row">
+        <div class="social">
+          <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/eriktaylor" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener" aria-label="Medium"><i class="fab fa-medium"></i></a>
+        </div>
+        <span class="copyright">© 2026 Erik Taylor</span>
       </div>
-      <span class="copyright">© 2026 Erik Taylor</span>
     </div>
   </footer>
 </body>
