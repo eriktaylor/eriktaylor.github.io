@@ -33,10 +33,10 @@
       --navy:      #15233f;   /* primary ink / headings */
       --navy-soft: #1f4e79;   /* links — résumé/LinkedIn brand */
       --accent:    #9c531f;   /* sparing warm accent */
-      --paper:     #fbfaf6;
+      --paper:     #ece7da;
       --ink:       #25272e;
       --ink-soft:  #5d6270;
-      --rule:      #e4e0d6;
+      --rule:      #ddd6c6;
       --rule-strong:#d2ccbd;
       --measure:   720px;
     }
@@ -70,8 +70,7 @@
     /* --- Top bar --- */
     .topbar {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(251,250,246,0.9);
-      backdrop-filter: blur(6px);
+      background: var(--paper);
       border-bottom: 1px solid var(--rule);
     }
     .topbar .wrap {
@@ -80,7 +79,7 @@
     }
     .topbar .who { font-weight: 600; color: var(--navy); font-size: 1rem; }
     .topbar nav { display: flex; gap: 1.2rem; }
-    .topbar nav a { color: var(--ink-soft); font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .topbar nav a { color: var(--ink-soft); font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .topbar nav a:hover { color: var(--navy); text-decoration: none; }
 
     /* --- Masthead --- */
@@ -96,13 +95,25 @@
       font-weight: 600; font-size: 2.1rem; line-height: 1.1;
       letter-spacing: -0.015em; color: var(--navy); margin: 0 0 0.35rem;
     }
-    .id-text .title { color: var(--ink-soft); font-size: 1.02rem; margin: 0 0 0.5rem; }
-    .id-text .title .sep { color: var(--rule-strong); margin: 0 0.5rem; }
-    .id-links a { color: var(--ink-soft); margin-right: 1rem; }
+    .id-text .title { color: var(--ink); font-size: 1.02rem; margin: 0 0 0.5rem; }
+    .id-text .title .sep { color: var(--ink-soft); margin: 0 0.5rem; }
+    .id-links a { color: var(--navy); font-weight: 500; margin-right: 1rem; }
     .id-links a:hover { color: var(--accent); text-decoration: none; }
 
     .bio { font-size: 1.18rem; line-height: 1.6; max-width: 62ch; margin: 0; color: var(--ink); }
     .bio strong { color: var(--navy); font-weight: 600; }
+
+    .resume-cta { margin-top: 1.7rem; }
+    .btn-resume {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.74rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--paper); background: var(--navy);
+      border: 1px solid var(--navy); border-radius: 6px;
+      padding: 0.62rem 1.15rem; cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .btn-resume:hover { background: var(--navy-soft); transform: translateY(-1px); }
+    .btn-resume:active { transform: translateY(0); }
 
     /* --- Sections --- */
     section { padding: 2.8rem 0; border-bottom: 1px solid var(--rule); }
@@ -153,7 +164,7 @@
     .project .proj-link a { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; letter-spacing: 0.05em; }
     .project .proj-link a::after { content: " →"; color: var(--accent); }
     .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.03em; color: var(--navy-soft); border: 1px solid var(--rule-strong); padding: 0.15rem 0.5rem; border-radius: 3px; }
+    .tag { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.03em; color: var(--navy-soft); border: 1px solid var(--rule-strong); padding: 0.15rem 0.5rem; border-radius: 3px; }
 
     /* --- Experience --- */
     .exp-item { padding: 1.1rem 0; border-top: 1px solid var(--rule); }
@@ -219,6 +230,9 @@
       <p class="bio reveal" style="animation-delay:.1s">
         I'm a <strong>PhD engineer (Brown)</strong> building agentic LLM systems, edge AI, and model-evaluation tooling — with recent work spanning on-sensor computer vision at <strong>Sony</strong>, frontier-model evaluation at <strong>Snorkel AI</strong>, and NIH-funded medical imaging research. 50+ peer-reviewed publications. Focused on AI that's measurably reliable and safe to deploy.
       </p>
+      <div class="resume-cta reveal" style="animation-delay:.2s">
+        <button type="button" class="btn-resume" id="resume-btn">Download Résumé</button>
+      </div>
     </div>
   </header>
 
@@ -361,5 +375,36 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    /* "Download Résumé" — reveal the file on click instead of hard-coding a
+       static link, so low-effort scrapers that only parse the static markup
+       don't see the path (it's base64-encoded below, not a plaintext string).
+       Zero friction for humans: click → download. robots.txt also disallows
+       the served directory. */
+    (function () {
+      var btn = document.getElementById("resume-btn");
+      if (!btn) return;
+      var FILE = "cmVzdW1lL3Jlc3VtZS5wZGY=";   // encoded served path
+      var DLNAME = "Erik_Taylor_Resume.pdf";    // filename the visitor receives
+      var download = function (url) {
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = DLNAME;
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+      btn.addEventListener("click", function () {
+        var url = atob(FILE);
+        // Confirm the file is published before navigating, so the button never
+        // lands on a 404 (e.g. before the résumé PDF has been generated).
+        fetch(url, { method: "HEAD" })
+          .then(function (r) { if (r.ok) { download(url); } else { btn.textContent = "Résumé coming soon"; } })
+          .catch(function () { download(url); });   // file:// preview / offline: just try it
+      });
+    })();
+  </script>
 </body>
 </html>

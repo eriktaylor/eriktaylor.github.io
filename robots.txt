@@ -1,0 +1,6 @@
+# Keep the résumé out of search indexes. The site itself is fine to crawl.
+# Note: GitHub Pages can't set the X-Robots-Tag HTTP header (no server config),
+# so this file + the JS-gated (non-static) download link are the realistic
+# equivalent — enough to make low-effort harvesters skip it.
+User-agent: *
+Disallow: /resume/

@@ -9,3 +9,8 @@ CLAUDE.md
 
 # Windows/WSL download metadata artifacts
 *:Zone.Identifier
+
+# Résumé: keep the editable .docx source local; publish only the built PDF
+# (resume/resume.pdf is the committed artifact and stays tracked).
+resume/*.docx
+resume/.~lock.*#
