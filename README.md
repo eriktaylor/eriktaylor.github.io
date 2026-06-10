@@ -1,12 +1,24 @@
-# **[eriktaylor.github.io](https://eriktaylor.github.io/)**  
+# **[eriktaylor.github.io](https://eriktaylor.github.io/)**
 
-### **Exploring Deep Learning, Vision Transformers, and Generative AI**  
+### The personal portfolio of Erik Taylor — ML R&D engineer (PhD, Brown University)
 
-This site serves as my portfolio and an educational hub for cutting-edge research in **Machine Learning, Deep Learning, and AI**. Topics covered include:  
+This is my portfolio site: selected work, writing, and publications spanning
+**agentic LLM systems, edge AI, and clinical/medical-imaging AI**, with a focus
+on AI that's measurably reliable and safe to deploy.
 
-- **Vision Transformers (ViTs)** – How transformer architectures revolutionize computer vision.  
-- **Generative AI** – Exploring diffusion models, rectified flow, and text-to-image generation.  
-- **LLM Alignment & Thought Process** – Teaching AI to reason and align with human thinking.  
-- **AI/ML Research & Engineering** – Insights from hands-on experiments and implementation.  
+It's a single self-contained `index.html` served via **GitHub Pages**. Recent
+writing and projects cover:
 
-Follow along for deep dives, tutorials, and blog posts on the latest advancements in AI.
+- **Agentic LLM systems** — multi-step agents, cascading LLMs, human-in-the-loop.
+- **Edge & on-device AI** — on-sensor computer vision and browser/edge inference.
+- **Model evaluation & alignment** — frontier-model evaluation and reliability.
+- **Medical imaging research** — NIH-funded clinical AI and 50+ publications.
+
+📝 Read the writing on [Medium](https://medium.com/@erikntaylor) ·
+💼 [LinkedIn](https://www.linkedin.com/in/erikntaylor) ·
+💻 [GitHub](https://github.com/eriktaylor)
+
+---
+
+Maintaining or forking this repo? See **[`DEVELOPMENT.md`](DEVELOPMENT.md)** for
+how to edit, preview locally, and publish the résumé.
