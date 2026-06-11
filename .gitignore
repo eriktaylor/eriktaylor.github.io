@@ -10,6 +10,12 @@ CLAUDE.md
 # Windows/WSL download metadata artifacts
 *:Zone.Identifier
 
+# Image-asset scratch space: source banners and 1200x630 OG crop candidates.
+# The chosen, published banner is committed under a clean name (share-banner.jpg).
+image_asset_test/
+*_og.jpg
+write_on_three_lines_agentic_202606101031.jpeg
+
 # Résumé: keep the editable .docx source local; publish only the built PDF
 # (resume/resume.pdf is the committed artifact and stays tracked).
 resume/*.docx
