@@ -11,7 +11,7 @@ writing and projects cover:
 - **Agentic LLM systems** — multi-step agents, cascading LLMs, human-in-the-loop.
 - **Edge & on-device AI** — on-sensor computer vision and browser/edge inference.
 - **Model evaluation & alignment** — frontier-model evaluation and reliability.
-- **Compputational imaging research** — NIH-funded track-record and 50+ publications.
+- **Computational imaging research** — NIH-funded track-record and 50+ publications.
 
 📝 Read the writing on [Medium](https://medium.com/@erikntaylor) ·
 💼 [LinkedIn](https://www.linkedin.com/in/erikntaylor) ·
