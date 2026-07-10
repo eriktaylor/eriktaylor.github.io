@@ -3,8 +3,7 @@
 ### The personal portfolio of Erik Taylor — ML R&D engineer (PhD, Brown University)
 
 This is my portfolio site: selected work, writing, and publications spanning
-**agentic LLM systems, edge AI, and clinical/medical-imaging AI**, with a focus
-on AI that's measurably reliable and safe to deploy.
+**agentic LLM systems, edge AI, and computational imaging, and AI research**, with a focus on AI that's measurably reliable and safe to deploy.
 
 It's a single self-contained `index.html` served via **GitHub Pages**. Recent
 writing and projects cover:
