@@ -10,10 +10,12 @@ The personal portfolio site for Erik Taylor, served at
 
 - **No build step, no framework, no package manager, no test suite.** Pushing to
   `main` publishes the site directly — typically live within a minute or two.
-- The entire site is a **single self-contained [`index.html`](index.html)**: all
-  CSS lives inline in one `<style>` block, theming is driven by CSS custom
-  properties under `:root` (`--navy`, `--accent`, `--paper`, `--ink`, …), and the
-  only external dependencies are CDN links (Google Fonts + Font Awesome).
+- The site is a small set of **self-contained HTML pages** — the home page
+  [`index.html`](index.html) plus `evidence/portfolio-manager/index.html`. All
+  CSS lives inline in each page's `<style>` block, theming is driven by CSS
+  custom properties under `:root` (`--navy`, `--accent`, `--paper`, `--ink`, …)
+  — **duplicated per page, so keep the tokens in sync** — and the only external
+  dependencies are CDN links (Google Fonts; Font Awesome on the home page).
 - Images are loose files in the repo root (e.g. `erik_taylor.jpg`), referenced by
   relative path.
 
@@ -87,7 +89,8 @@ résumé workflow itself lives in [`resume/README.md`](resume/README.md).
 
 | Path | What it is |
 |---|---|
-| `index.html` | The entire site (markup + inline CSS + inline JS). |
+| `index.html` | The home page (markup + inline CSS + inline JS). |
+| `evidence/` | Standalone evidence pages, same inline-CSS pattern (`:root` tokens duplicated from `index.html`). |
 | `*.jpg` | Loose image assets referenced by relative path. |
 | `robots.txt` | Disallows crawling `/resume/`. |
 | `scripts/publish_resume.sh` | Résumé convert → scan → confirm → copy publisher. |

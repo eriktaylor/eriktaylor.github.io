@@ -3,15 +3,18 @@
 ### The personal portfolio of Erik Taylor — ML R&D engineer (PhD, Brown University)
 
 This is my portfolio site: selected work, writing, and publications spanning
-**agentic LLM systems, computational imaging, edge AI, and research**, with a focus on AI that's measurably reliable and safe to deploy.
+**agentic systems, developer tooling, and evaluation**, with a focus on AI that's
+measurably reliable and safe to deploy.
 
 It's a single self-contained `index.html` served via **GitHub Pages**. Recent
 writing and projects cover:
 
-- **Agentic LLM systems** — multi-step agents, cascading LLMs, human-in-the-loop.
-- **Edge & on-device AI** — on-sensor computer vision and browser/edge inference.
-- **Model evaluation & alignment** — frontier-model evaluation and reliability.
-- **Computational imaging research** — NIH-funded track-record and 50+ publications.
+- **Agentic LLM systems** — multi-step agents, cascading LLMs, autonomous execution
+  behind guardrails.
+- **Developer tooling** — Claude Code skills and agentic coding workflows.
+- **Model evaluation & alignment** — verified-outcome evaluation, frontier-model
+  evaluation, and reliability.
+- **Research background** — NIH-funded computational imaging research and 50+ publications.
 
 📝 Read the writing on [Medium](https://medium.com/@erikntaylor) ·
 💼 [LinkedIn](https://www.linkedin.com/in/erikntaylor) ·

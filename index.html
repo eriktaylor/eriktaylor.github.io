@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Erik Taylor — ML R&D Engineer</title>
-  <meta name="description" content="Erik Taylor — PhD engineer building agentic LLM systems, edge AI, and model-evaluation tooling. Writing and selected work in machine learning R&D.">
+  <meta name="description" content="Erik Taylor — PhD engineer building agentic LLM systems, developer tooling, and model-evaluation harnesses. Writing and selected work in machine learning R&D.">
 
   <!-- Open Graph / social preview -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://eriktaylor.github.io/">
   <meta property="og:title" content="Erik Taylor — ML R&D Engineer">
-  <meta property="og:description" content="PhD engineer building agentic LLM systems, edge AI, and model-evaluation tooling.">
+  <meta property="og:description" content="PhD engineer building agentic LLM systems, developer tooling, and model-evaluation harnesses.">
   <meta property="og:image" content="https://eriktaylor.github.io/share-banner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Erik Taylor — Agentic · Edge · Research AI">
+  <meta property="og:image:alt" content="Erik Taylor — Agentic Systems · Dev Tooling · Evaluation">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Erik Taylor — ML R&D Engineer">
-  <meta name="twitter:description" content="PhD engineer building agentic LLM systems, edge AI, and model-evaluation tooling.">
+  <meta name="twitter:description" content="PhD engineer building agentic LLM systems, developer tooling, and model-evaluation harnesses.">
   <meta name="twitter:image" content="https://eriktaylor.github.io/share-banner.jpg">
 
   <!-- Fonts: Newsreader (literary serif) + IBM Plex Mono (labels) -->
@@ -222,7 +222,7 @@
         <img class="portrait" src="erik_taylor.jpg" alt="Erik Taylor">
         <div class="id-text">
           <h1>Erik Taylor</h1>
-          <p class="title">Agentic<span class="sep">·</span>Edge<span class="sep">·</span>Research AI</p>
+          <p class="title">Agentic Systems<span class="sep">·</span>Dev Tooling<span class="sep">·</span>Evaluation</p>
           <div class="id-links mono">
             <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">LinkedIn</a>
             <a href="https://github.com/eriktaylor" target="_blank" rel="noopener">GitHub</a>
@@ -231,7 +231,7 @@
         </div>
       </div>
       <p class="bio reveal" style="animation-delay:.1s">
-        I'm a <strong>PhD engineer (Brown University)</strong> building agentic LLM systems, edge AI, and model-evaluation tooling — with recent work spanning on-sensor computer vision at <strong>Sony</strong>, frontier-model evaluation at <strong>Snorkel AI</strong>, and NIH-funded computational imaging research. 50+ peer-reviewed publications. Focused on AI that's measurably reliable and safe to deploy.
+        I'm a <strong>PhD engineer (Brown University)</strong> building agentic LLM systems, the developer tooling that makes them buildable, and the evaluation harnesses that prove they work. Prior work spans production computer vision at <strong>Sony</strong>, frontier-model evaluation at <strong>Snorkel AI</strong>, and NIH-funded computational imaging research, with 50+ peer-reviewed publications. Focused on AI that's measurably reliable and safe to deploy.
       </p>
       <div class="resume-cta reveal" style="animation-delay:.2s">
         <button type="button" class="btn-resume" id="resume-btn">Download Résumé</button>
@@ -245,24 +245,24 @@
         <div class="sec-head"><span class="num mono">01</span><h2>Selected Work</h2></div>
 
         <div class="project">
-          <h3><a href="https://github.com/eriktaylor/apply-daemon" target="_blank" rel="noopener">apply-daemon</a></h3>
+          <h3>Autonomous Portfolio Manager <span class="flag">(private)</span></h3>
+          <p>Market-calibrated LLM agents reason over financials, web search, and filings retrieval to generate investment theses, executing autonomously through Alpaca behind risk guardrails and circuit breakers. Every model rating is snapshotted with its evidence and joined to a realized forward return — +23.4% excess vs SPY over ten months of walk-forward paper trading (through 2026-07-31), with autocorrelation-robust confidence intervals rather than naive ones.</p>
+          <div class="tags"><span class="tag">LLM agents</span><span class="tag">verified-outcome eval</span><span class="tag">autonomous execution</span></div>
+          <p class="proj-link"><a href="evidence/portfolio-manager/">See the evidence</a></p>
+        </div>
+
+        <div class="project">
+          <h3><a href="https://github.com/eriktaylor/apply-daemon" target="_blank" rel="noopener">apply-daemon</a> <span class="flag">(public)</span></h3>
           <p>An agentic pipeline that cascades LLM calls to extract, judge, and evaluate roles, with a Slack human-in-the-loop layer for review and approval.</p>
-          <div class="tags"><span class="tag">agents</span><span class="tag">cascading LLMs</span><span class="tag">human-in-the-loop</span></div>
+          <div class="tags"><span class="tag">agents</span><span class="tag">cascading LLMs</span><span class="tag">human-in-the-loop</span><span class="tag">Apache-2.0</span></div>
           <p class="proj-link"><a href="https://github.com/eriktaylor/apply-daemon" target="_blank" rel="noopener">View source on GitHub</a></p>
         </div>
 
         <div class="project">
-          <h3>Autonomous Trading Agent <span class="flag">(private)</span></h3>
-          <p>A trading agent pairing a LightGBM signal model with an LLM agent layer, Alpaca execution, and a Streamlit monitoring dashboard — stress-tested live in volatile markets.</p>
-          <div class="tags"><span class="tag">LightGBM</span><span class="tag">agent layer</span><span class="tag">live execution</span></div>
-          <p class="proj-link"><a href="https://medium.com/@erikntaylor/tabular-foundation-models-vs-llms-a-live-stress-test-in-volatile-markets-674eff07164c" target="_blank" rel="noopener">Read the writeup</a></p>
-        </div>
-
-        <div class="project">
-          <h3>Browser-Based Edge Inference <span class="flag">(Napwise)</span></h3>
-          <p>On-device ML with WebLLM / WebGPU: tiered inference and hybrid retrieval running entirely client-side — no server, no API key, nothing leaves the device.</p>
-          <div class="tags"><span class="tag">WebGPU</span><span class="tag">WebLLM</span><span class="tag">hybrid RAG</span></div>
-          <p class="proj-link"><a href="https://napwise.ai" target="_blank" rel="noopener">Visit napwise.ai</a></p>
+          <h3><a href="https://github.com/eriktaylor/dev-plan" target="_blank" rel="noopener">dev-plan</a> <span class="flag">(public)</span></h3>
+          <p>An MIT-licensed Claude Code skill that turns planning conversations into scored, dependency-ordered development plans via a weighted implementation-priority model. Part of a broader skill suite covering cross-plan dependency coordination and structured ideation.</p>
+          <div class="tags"><span class="tag">Claude Code</span><span class="tag">dev tooling</span><span class="tag">MIT</span></div>
+          <p class="proj-link"><a href="https://github.com/eriktaylor/dev-plan" target="_blank" rel="noopener">View source on GitHub</a></p>
         </div>
 
       </div>
@@ -278,15 +278,7 @@
               <span class="exp-role">AI Research Lead &amp; ML Engineer <span class="co">· Taylor ML R&amp;D</span></span>
               <span class="exp-dates">2024 — Present</span>
             </div>
-            <p>Agentic systems, model evaluation, and AI-assisted engineering — built primarily through agentic coding workflows.</p>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-head">
-              <span class="exp-role">Founder &amp; Lead ML Engineer <span class="co">· Napwise.ai</span></span>
-              <span class="exp-dates">2025 — 2026</span>
-            </div>
-            <p>Shipped a privacy-first, on-device generative AI product end-to-end.</p>
+            <p>Agentic systems, developer tooling, and model evaluation — built primarily through agentic coding workflows, operating as human-in-the-loop director of AI-assisted engineering.</p>
           </div>
 
           <div class="exp-item">
@@ -302,7 +294,7 @@
               <span class="exp-role">Senior Algorithm Engineer <span class="co">· Sony Electronics</span></span>
               <span class="exp-dates">2022 — 2024</span>
             </div>
-            <p>Production on-sensor computer vision for edge devices including phones and VR headsets; secured a Fortune 500 design win.</p>
+            <p>Production computer vision shipped to phones and VR headsets — cascaded inference across sensor and host; secured a Fortune 500 design win.</p>
           </div>
 
           <div class="exp-item">
@@ -329,12 +321,12 @@
       <div class="wrap">
         <div class="sec-head"><span class="num mono">03</span><h2>Selected Writing</h2></div>
         <ul class="writing-list">
+          <li><a href="https://medium.com/digital-mind/making-better-development-plans-into-a-skill-for-claude-code-093db647b404" target="_blank" rel="noopener"><span class="wtitle">Development plans as a skill for Claude Code</span></a></li>
           <li><a href="https://medium.com/@erikntaylor/the-ghost-of-gauss-redefining-genius-in-the-age-of-silicon-4fc008378e81" target="_blank" rel="noopener"><span class="wtitle">The Ghost of Gauss: Redefining Genius in the Age of Silicon</span></a></li>
           <li><a href="https://medium.com/digital-mind/understanding-multi-head-latent-attention-36f5d954f0cf" target="_blank" rel="noopener"><span class="wtitle">Understanding Multi-Head Latent Attention</span></a></li>
           <li><a href="https://medium.com/digital-mind/diffusion-transformer-and-rectified-flow-for-conditional-image-generation-997075c12e2f" target="_blank" rel="noopener"><span class="wtitle">Diffusion Transformer &amp; Rectified Flow for Conditional Image Generation</span></a></li>
           <li><a href="https://medium.com/digital-mind/quantifying-memorization-in-llms-implications-for-creativity-and-algorithmic-thought-0e553cd73581" target="_blank" rel="noopener"><span class="wtitle">Quantifying Memorization in LLMs: Implications for Creativity and Algorithmic Thought</span></a></li>
           <li><a href="https://medium.com/digital-mind/visual-planning-and-reasoning-in-llms-vector-graphics-and-structured-representations-f0fa021f9e80" target="_blank" rel="noopener"><span class="wtitle">Visual Planning and Reasoning in LLMs: Vector Graphics and Structured Representations</span></a></li>
-          <li><a href="https://medium.com/digital-mind/visualizing-dinov2-contrastive-learning-and-classification-examples-9e6d8f87acf6" target="_blank" rel="noopener"><span class="wtitle">Visualizing DINOv2 contrastive learning and classification examples</span></a></li>
         </ul>
         <p class="more-link"><a href="https://medium.com/@erikntaylor" target="_blank" rel="noopener">All writing on Medium</a></p>
       </div>
@@ -367,7 +359,7 @@
 
   <footer>
     <div class="wrap">
-      <p class="footer-note">Open to conversations about agentic systems, edge AI, and model evaluation — best reached by a direct message on <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      <p class="footer-note">Open to conversations about agentic systems, developer tooling, and model evaluation — best reached by a direct message on <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener">LinkedIn</a>.</p>
       <div class="footer-row">
         <div class="social">
           <a href="https://www.linkedin.com/in/erikntaylor" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
