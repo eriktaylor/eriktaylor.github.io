@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Portfolio Manager — Evidence — Erik Taylor</title>
+  <meta name="description" content="Verified numbers, methodology, and known limitations for an autonomous LLM portfolio manager — +23.4% excess vs SPY over ten months of walk-forward paper trading through 2026-07-31.">
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eriktaylor.github.io/evidence/portfolio-manager/">
+  <meta property="og:title" content="Autonomous Portfolio Manager — Evidence">
+  <meta property="og:description" content="Verified numbers, methodology, and known limitations. Walk-forward paper trading, figures as of 2026-07-31.">
+  <meta property="og:image" content="https://eriktaylor.github.io/share-banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Erik Taylor — Agentic Systems · Dev Tooling · Evaluation">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Autonomous Portfolio Manager — Evidence">
+  <meta name="twitter:description" content="Verified numbers, methodology, and known limitations. Walk-forward paper trading, figures as of 2026-07-31.">
+  <meta name="twitter:image" content="https://eriktaylor.github.io/share-banner.jpg">
+
+  <!-- Fonts: Newsreader (literary serif) + IBM Plex Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+
+  <style>
+    /* Palette and type mirror the site root (index.html). There is no shared
+       stylesheet by design — see CLAUDE.md. Keep these tokens in sync by hand. */
+    :root {
+      --navy:      #15233f;
+      --navy-soft: #1f4e79;
+      --accent:    #9c531f;
+      --paper:     #ece7da;
+      --ink:       #25272e;
+      --ink-soft:  #5d6270;
+      --rule:      #ddd6c6;
+      --rule-strong:#d2ccbd;
+      --measure:   760px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Newsreader", Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      line-height: 1.62;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.5rem; }
+
+    a { color: var(--navy-soft); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .mono {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* --- Top bar --- */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+    }
+    .topbar .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 0.75rem; padding-bottom: 0.75rem;
+    }
+    .topbar .who { font-weight: 600; color: var(--navy); font-size: 1rem; }
+    .topbar nav a {
+      color: var(--ink-soft); font-family: "IBM Plex Mono", monospace;
+      font-weight: 600; font-size: 0.74rem; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .topbar nav a:hover { color: var(--navy); text-decoration: none; }
+    .topbar nav a::before { content: "← "; color: var(--accent); }
+
+    /* --- Masthead --- */
+    .masthead { padding: 3rem 0 2.2rem; border-bottom: 1px solid var(--rule); }
+    .kicker { color: var(--accent); margin: 0 0 0.6rem; }
+    .masthead h1 {
+      font-weight: 600; font-size: 2.05rem; line-height: 1.12;
+      letter-spacing: -0.015em; color: var(--navy); margin: 0 0 0.2rem;
+    }
+    .masthead .flag {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.64rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+      font-weight: 400; vertical-align: middle; margin-left: 0.45rem;
+    }
+    .standfirst { font-size: 1.14rem; line-height: 1.6; max-width: 64ch; margin: 1.1rem 0 0; }
+
+    /* --- As-of banner: the single most important qualifier on the page --- */
+    .asof {
+      margin: 1.8rem 0 0; padding: 1rem 1.15rem;
+      border: 1px solid var(--rule-strong); border-left: 3px solid var(--accent);
+      border-radius: 4px; background: rgba(255,255,255,0.42);
+    }
+    .asof p { margin: 0; font-size: 1.02rem; color: var(--ink); }
+    .asof p + p { margin-top: 0.5rem; }
+    .asof strong { color: var(--navy); font-weight: 600; }
+
+    /* --- Sections --- */
+    section { padding: 2.6rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+    .sec-head { display: flex; align-items: baseline; gap: 0.8rem; margin: 0 0 1.4rem; }
+    .sec-head .num { color: var(--accent); }
+    .sec-head h2 {
+      font-weight: 600; font-size: 1.05rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--navy);
+      font-family: "IBM Plex Mono", monospace; margin: 0;
+    }
+    section p { max-width: 64ch; }
+    .lede { color: var(--ink-soft); font-size: 1rem; margin: 0 0 1.3rem; max-width: 64ch; }
+
+    /* --- Numbers table --- */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table.numbers { width: 100%; border-collapse: collapse; font-size: 1rem; min-width: 30rem; }
+    table.numbers th {
+      text-align: left; font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-soft); font-weight: 500;
+      padding: 0 0 0.6rem; border-bottom: 1px solid var(--rule-strong);
+    }
+    table.numbers td { padding: 0.68rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    table.numbers td:first-child { color: var(--ink-soft); padding-right: 1.6rem; white-space: nowrap; }
+    table.numbers td:last-child { color: var(--ink); }
+    table.numbers .val { color: var(--navy); font-weight: 600; }
+    table.numbers .sub { color: var(--ink-soft); font-size: 0.94rem; }
+
+    /* --- Q&A --- */
+    .qa { border-top: 1px solid var(--rule); padding: 1.4rem 0 0.2rem; }
+    .qa:first-of-type { border-top: none; padding-top: 0; }
+    .qa h3 { font-size: 1.22rem; font-weight: 600; color: var(--navy); margin: 0 0 0.5rem; }
+    .qa h3 .qnum { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; color: var(--accent); margin-right: 0.5rem; }
+    .qa p { margin: 0 0 0.85rem; }
+    .qa p:last-child { margin-bottom: 1.2rem; }
+
+    /* --- Emphasis on an admitted weakness --- */
+    .concede {
+      border-left: 2px solid var(--rule-strong); padding-left: 1rem;
+      color: var(--ink); font-style: italic;
+    }
+
+    /* --- Findings / bullets --- */
+    .finding { padding: 1.2rem 0; border-top: 1px solid var(--rule); }
+    .finding:first-of-type { border-top: none; padding-top: 0; }
+    .finding h3 { font-size: 1.15rem; font-weight: 600; color: var(--navy); margin: 0 0 0.4rem; }
+    .finding p { margin: 0 0 0.5rem; }
+    ul.plain { margin: 0; padding: 0 0 0 1.1rem; max-width: 64ch; }
+    ul.plain li { margin: 0 0 0.6rem; padding-left: 0.2rem; }
+    ul.plain li:last-child { margin-bottom: 0; }
+    ul.plain strong { color: var(--navy); font-weight: 600; }
+
+    .note {
+      margin-top: 1.4rem; padding: 0.9rem 1.1rem;
+      border: 1px dashed var(--rule-strong); border-radius: 4px;
+      font-size: 0.98rem; color: var(--ink-soft); max-width: 64ch;
+    }
+    .note strong { color: var(--ink); font-weight: 600; }
+
+    /* --- Footer --- */
+    footer { padding: 2.2rem 0 3rem; border-top: 1px solid var(--rule); }
+    .footer-stamp {
+      font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
+      letter-spacing: 0.05em; color: var(--ink-soft); margin: 0 0 1rem;
+    }
+    .footer-back { font-size: 1rem; margin: 0; }
+
+    @media (max-width: 600px) {
+      body { font-size: 18px; }
+      .masthead h1 { font-size: 1.72rem; }
+      table.numbers { font-size: 0.95rem; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(12px); animation: rise .7s cubic-bezier(.2,.7,.2,1) forwards; }
+      @keyframes rise { to { opacity: 1; transform: none; } }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span class="who">Erik Taylor</span>
+      <nav><a href="../../">Back to site</a></nav>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="wrap">
+      <p class="kicker mono reveal">Evidence &amp; Methodology</p>
+      <h1 class="reveal">Autonomous Portfolio Manager <span class="flag">(private)</span></h1>
+      <p class="standfirst reveal" style="animation-delay:.1s">
+        Market-calibrated LLM agents reason over financials, web search, and filings
+        retrieval to generate investment theses, executing autonomously through Alpaca
+        behind risk guardrails and circuit breakers. Every model rating is
+        snapshotted with its evidence and joined to a realized forward return.
+      </p>
+
+      <div class="asof reveal" style="animation-delay:.15s">
+        <p><strong>All figures on this page share one endpoint: 2026-07-31.</strong>
+        The headline moves roughly ±1 percentage point per trading day, so a figure
+        quoted without its date is meaningless.</p>
+        <p><strong>This is walk-forward paper trading, not a live-money track
+        record.</strong> The distinction is not cosmetic and is not buried further
+        down the page.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="numbers">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">01</span><h2>Verified Numbers</h2></div>
+        <p class="lede">Each row was re-derived from committed artifacts as of 2026-07-31.</p>
+
+        <div class="table-scroll">
+          <table class="numbers">
+            <thead>
+              <tr><th scope="col">Measure</th><th scope="col">Value</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Period</td>
+                <td>2025-09-22 → 2026-07-31 <span class="sub">(216 trading days)</span></td>
+              </tr>
+              <tr>
+                <td>Excess vs SPY</td>
+                <td><span class="val">+23.37%</span> <span class="sub">(picks +36.32%, SPY +12.95%; equal-footing time-weighted return)</span></td>
+              </tr>
+              <tr>
+                <td>Sharpe (picks, annualized)</td>
+                <td><span class="val">1.82</span></td>
+              </tr>
+              <tr>
+                <td>Max drawdown</td>
+                <td><span class="val">−11.3%</span></td>
+              </tr>
+              <tr>
+                <td>Rolling 21-trading-day windows beating SPY</td>
+                <td><span class="val">76%</span></td>
+              </tr>
+              <tr>
+                <td>Ratings issued</td>
+                <td>2,008 across 374 tickers <span class="sub">· 1,640 matured at the full 21-trading-day horizon</span></td>
+              </tr>
+              <tr>
+                <td>Names actually held</td>
+                <td>181 <span class="sub">· 4,645 fills</span></td>
+              </tr>
+              <tr>
+                <td>Judge models</td>
+                <td>12 in registry, 9 active</td>
+              </tr>
+              <tr>
+                <td>Test suite</td>
+                <td>602 tests, CI on every push</td>
+              </tr>
+              <tr>
+                <td>Workflows (GitHub Actions)</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>Operator dashboard</td>
+                <td>8 read-only tabs</td>
+              </tr>
+              <tr>
+                <td>Real-cash mirror</td>
+                <td>Live since 2026-07-13, hard-capped</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="questions">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">02</span><h2>Three Questions A Sharp Reader Will Ask</h2></div>
+        <p class="lede">Answered here before anyone has to ask them.</p>
+
+        <div class="qa">
+          <h3><span class="qnum">Q1</span>Paper or real money?</h3>
+          <p><strong>Paper.</strong> The paper account is the committed source of truth
+          for every figure above. A real-cash mirror has run since 2026-07-13 under a
+          hard cap, but the headline is never presented as a live-money track record.</p>
+          <p>What makes it meaningful anyway is that it is <em>walk-forward</em>: every
+          decision was made in real time, before its outcome was known, and nothing was
+          ever retroactively fitted to realized outcomes. That is a stronger claim than
+          a backtest, which is why it is the framing used throughout.</p>
+          <p>It is <em>not</em> a claim that nothing is ever re-fit. The candidate ranker
+          refits on each run — standard walk-forward practice — and the judge prompt was
+          revised mid-period on 2026-07-11. Both are forward-only; neither looks at an
+          outcome it then gets scored on.</p>
+        </div>
+
+        <div class="qa">
+          <h3><span class="qnum">Q2</span>How many independent observations?</h3>
+          <p>Fewer than the day count suggests. The period contains roughly
+          <strong>10 independent 21-trading-day windows</strong> — a small sample, and the
+          honest denominator for any claim made here.</p>
+          <p>The autocorrelation-robust confidence interval on mean 21-trading-day excess
+          return is <strong>[+0.06%, +3.82%]</strong>.</p>
+          <p class="concede">Positive — but the lower bound barely clears zero. That is
+          the single weakest number on this page, and it is stated here rather than left
+          for a reader to derive.</p>
+          <p>All such inference routes through one guarded helper precisely because naive
+          standard errors understate uncertainty by roughly 3× on overlapping windows.
+          Getting this wrong is the most common way a strategy result is oversold.</p>
+        </div>
+
+        <div class="qa">
+          <h3><span class="qnum">Q3</span>Is it really the LLM, or just beta?</h3>
+          <p>Fair question, and it was measured both ways.</p>
+          <p>The LightGBM candidate ranker's apparent edge was
+          <strong>~entirely a volatility tilt</strong> — partial information coefficient
+          ≈ 0 after controlling for 63-day volatility. It was not picking winners; it was
+          picking volatile names in a rising market.</p>
+          <p>The <strong>LLM judges' signal survives the same control</strong>
+          (+0.232 → +0.214; +0.210 → +0.201). So the agents carry the result, not the
+          ranker — which is why the agents lead every description of this system.</p>
+          <p>That negative result was found on my own work, written up internally rather
+          than quietly dropped, and is repeated here for the same reason.</p>
+
+          <div class="note">
+            <strong>A superseded writeup exists.</strong> An earlier Medium post
+            (<a href="https://medium.com/@erikntaylor/tabular-foundation-models-vs-llms-a-live-stress-test-in-volatile-markets-674eff07164c" target="_blank" rel="noopener">16 March 2026</a>)
+            describes the ranker-led version of this architecture. It is a dated snapshot
+            that predates the volatility-tilt finding above, and it is not the source for
+            any figure on this page. Read it as history, not as a current description.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evaluation">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">03</span><h2>What The Evaluation Measures</h2></div>
+        <p>Every model decision is snapshotted with the evidence it was based on and
+        joined to a realized forward return. That produces per-model skill — rank
+        information coefficient with date-clustered confidence intervals, calibration,
+        and a null-anchored rating board — rather than an impression of which model
+        seems good.</p>
+        <p>Roster membership is a consequence of that measurement. A model earns its
+        place against a codified statistical bar and loses it the same way; no model is
+        included because of its brand.</p>
+      </div>
+    </section>
+
+    <section id="bugs">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">04</span><h2>Measurement Bugs, Found And Corrected</h2></div>
+        <p class="lede">Both were documented rather than quietly patched. A performance
+        number is only as good as the measurement code behind it.</p>
+
+        <div class="finding">
+          <h3>A horizon convention that silently measured the wrong window</h3>
+          <p>The evaluation horizon was labelled 21 trading days everywhere but actually
+          measured 14. Correcting it <strong>reversed a live model-deprecation
+          decision</strong> — a model had been dropped on the strength of a number that
+          was measuring something other than what it claimed.</p>
+        </div>
+
+        <div class="finding">
+          <h3>A fill poller that recorded intermediate partial quantities</h3>
+          <p>The broker fill poller captured partial quantities mid-execution, corrupting
+          207 ledger rows. It was root-caused, fixed at the source rather than patched
+          downstream, and the affected history was <strong>restated from broker
+          truth</strong>. The figures published on this page reflect that restatement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <div class="wrap">
+        <div class="sec-head"><span class="num mono">05</span><h2>Safety Architecture</h2></div>
+        <p class="lede">Trades execute autonomously — no human approves an individual
+        order. Oversight is structural rather than manual: read-only dashboards, automatic
+        halts, and a kill switch.</p>
+        <ul class="plain">
+          <li><strong>Execution circuit breakers</strong> reject a defective target
+          before any order reaches the broker.</li>
+          <li><strong>Decision and execution are decoupled</strong> workflows, so a fault
+          in one cannot silently drive the other.</li>
+          <li><strong>The real-cash mirror is hard-capped</strong> and independently
+          monitored.</li>
+          <li><strong>Invariants are test-enforced</strong> — for example, shadow
+          evaluation can never influence the live book.</li>
+          <li><strong>A scheduled agent audits the project's own validation calendar</strong>,
+          proposes corrections, and is firewalled from editing it. A frozen 7-case
+          evaluation measures whether the model doing that job is actually any good.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="footer-stamp">Figures as of 2026-07-31. Walk-forward paper trading.</p>
+      <p class="footer-back"><a href="../../">← Back to eriktaylor.github.io</a></p>
+    </div>
+  </footer>
+</body>
+</html>
