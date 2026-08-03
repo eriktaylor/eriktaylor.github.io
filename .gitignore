@@ -4,6 +4,10 @@
 # Candid job-search strategy / positioning notes
 website_improvement_plan.md
 
+# Local working docs: release sheets, plans, résumé sources. Never publish —
+# resume_release.md contains the unredacted claim boundary for private work.
+local_docs/
+
 # Local working guidance for Claude Code
 CLAUDE.md
 
