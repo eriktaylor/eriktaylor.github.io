@@ -20,9 +20,40 @@ SERVED_PDF="$RESUME_DIR/resume.pdf"
 rel() { printf '%s' "${1#"$REPO_ROOT"/}"; }
 
 # --- 1. locate the editable source ------------------------------------------
+# Word writes an owner/lock file named `~$<name>.docx` while a document is open.
+# It matches *_Resume.docx, so filter it out of the source glob — otherwise it
+# looks like a second résumé and trips the "keep exactly one" branch below with
+# a message that points at the wrong problem.
 shopt -s nullglob
-sources=("$RESUME_DIR"/*_Resume.docx)
+sources=()
+locks=()
+for f in "$RESUME_DIR"/*_Resume.docx; do
+  case "${f##*/}" in
+    '~$'*) locks+=("$f") ;;
+    *)     sources+=("$f") ;;
+  esac
+done
 shopt -u nullglob
+
+# A lock file means Word (or LibreOffice) may still hold unsaved changes in
+# memory. Publishing now would build the PDF from a .docx that is already stale,
+# and a later save in the editor would silently overwrite any scripted edits.
+if [ ${#locks[@]} -gt 0 ]; then
+  cat <<MSG
+
+WARNING: the résumé appears to be OPEN in a word processor.
+
+  lock file: $(rel "${locks[0]}")
+
+  The .docx on disk may not include unsaved edits, and saving from the editor
+  after this run would overwrite anything changed on disk in the meantime.
+
+  Close the document first, then re-run. If the editor crashed, the lock file
+  is stale and safe to delete.
+MSG
+  printf "Continue anyway? [y/N] "
+  read -r lk; case "$lk" in y|Y|yes|YES) echo ;; *) echo "Stopped — nothing published."; exit 0 ;; esac
+fi
 
 if [ ${#sources[@]} -eq 0 ]; then
   cat <<MSG
