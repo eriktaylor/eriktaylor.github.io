@@ -118,13 +118,28 @@ font_meta() {
   esac
 }
 
+# Detect the font the text is actually set in: weight each run's font by its
+# character count. Runs without a direct w:rFonts inherit the docDefaults font.
+# (docDefaults alone is misleading — Word templates default to Calibri even when
+# every run is direct-formatted in another font.)
 CURRENT_FONT="$(SRC="$SRC" python3 - <<'PY'
 import os, re, zipfile
+from collections import Counter
 try:
-    st = zipfile.ZipFile(os.environ["SRC"]).read("word/styles.xml").decode("utf-8","ignore")
+    z = zipfile.ZipFile(os.environ["SRC"])
+    st = z.read("word/styles.xml").decode("utf-8","ignore")
     dd = re.search(r'<w:docDefaults>.*?</w:docDefaults>', st, re.S)
     m = re.search(r'w:ascii="([^"]+)"', dd.group(0) if dd else st)
-    print(m.group(1) if m else "Calibri")
+    default = m.group(1) if m else "Calibri"
+    doc = z.read("word/document.xml").decode("utf-8","ignore")
+    weight = Counter()
+    for run in re.findall(r'<w:r[ >].*?</w:r>', doc, re.S):
+        text = "".join(re.findall(r'<w:t(?: [^>]*)?>([^<]*)</w:t>', run))
+        if not text.strip():
+            continue
+        f = re.search(r'<w:rFonts [^>]*w:ascii="([^"]+)"', run)
+        weight[f.group(1) if f else default] += len(text)
+    print(weight.most_common(1)[0][0] if weight else default)
 except Exception:
     print("Calibri")
 PY
