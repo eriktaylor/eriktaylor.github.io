@@ -1,6 +1,6 @@
 # **[eriktaylor.github.io](https://eriktaylor.github.io/)**
 
-### The personal portfolio of Erik Taylor — ML R&D engineer (PhD, Brown University)
+### The personal portfolio of Erik Taylor — AI systems architect & ML engineer (PhD, Brown University)
 
 This is my portfolio site: selected work, writing, and publications spanning
 **agentic systems, developer tooling, and evaluation**, with a focus on AI that's
